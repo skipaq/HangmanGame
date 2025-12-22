@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class GameLogic {
 
-    private char[] randomWord;
+    private final char[] randomWord;
     private char[] maskWord;
     private int mistakesCounter;
     private HashSet<Character> enteredChars = new HashSet<>();
@@ -44,7 +44,7 @@ public class GameLogic {
 
     private void displayGameResult() {
         if (mistakesCounter >= GameSettings.MAX_MISTAKES){
-            System.out.println("\nПОРАЖЕНИЕ! 8===э . Загаданное слово было: " + new String(randomWord));
+            System.out.println("\nПОРАЖЕНИЕ! Загаданное слово было: " + new String(randomWord));
         } else {
             System.out.println("\nПОБЕДА! Красава!");
         }
@@ -52,7 +52,7 @@ public class GameLogic {
 
     private void searchForEnteredChar(char c){
         if(enteredChars.contains(c)){
-            System.out.println("Такая буква уже вводилась!\nТекущее слово: " + new String(maskWord) + "\n");
+            System.out.println("Такая буква уже вводилась! Текущее слово: " + new String(maskWord) + "\n");
             return;
         }
         boolean foundChar = false;
@@ -63,7 +63,7 @@ public class GameLogic {
             }
         }
         if (foundChar) {
-            System.out.println("Есть такая буква!\nТекущее слово: " + new String(maskWord));
+            System.out.println("Есть такая буква! Текущее слово: " + new String(maskWord));
         } else {
             mistakesCounter++;
             System.out.println("Нет такой буквы! Ошибок: " + mistakesCounter + "/" + GameSettings.MAX_MISTAKES + ". " +
@@ -74,64 +74,70 @@ public class GameLogic {
     private void drawHagman(int mistakesCounter) {
         switch(mistakesCounter){
             case 1:
-                System.out.println("  ____ \n" +
-                                    "/     | \n" +
-                                    "|     O \n" +
-                                    "|        \n" +
-                                    "|        \n" +
-                                    "|\n" +
-                                    "|\n" +
-                                    "/\\");
+                System.out.println("""
+                          ____\s
+                        /     |\s
+                        |     O\s
+                        |       \s
+                        |       \s
+                        |
+                        |
+                        /\\""");
                 break;
             case 2:
-                System.out.println("  ____ \n" +
-                                    "/     | \n" +
-                                    "|     O \n" +
-                                    "|     | \n" +
-                                    "|        \n" +
-                                    "|\n" +
-                                    "|\n" +
-                                    "/\\");
+                System.out.println("""
+                          ____\s
+                        /     |\s
+                        |     O\s
+                        |     |\s
+                        |       \s
+                        |
+                        |
+                        /\\""");
                 break;
             case 3:
-                System.out.println("  ____ \n" +
-                                    "/     | \n" +
-                                    "|     O \n" +
-                                    "|    /| \n" +
-                                    "|       \n" +
-                                    "|\n" +
-                                    "|\n" +
-                                    "/\\");
+                System.out.println("""
+                          ____\s
+                        /     |\s
+                        |     O\s
+                        |    /|\s
+                        |      \s
+                        |
+                        |
+                        /\\""");
                 break;
             case 4:
-                System.out.println("  ____ \n" +
-                                    "/     | \n" +
-                                    "|     O \n" +
-                                    "|    /|\\\n" +
-                                    "|       \n" +
-                                    "|\n" +
-                                    "|\n" +
-                                    "/\\");
+                System.out.println("""
+                          ____\s
+                        /     |\s
+                        |     O\s
+                        |    /|\\
+                        |      \s
+                        |
+                        |
+                        /\\""");
                 break;
             case 5:
-                System.out.println("  ____ \n" +
-                                    "/     | \n" +
-                                    "|     O \n" +
-                                    "|    /|\\\n" +
-                                    "|     /  \n" +
-                                    "|\n" +
-                                    "|\n" +
-                                    "/\\");
+                System.out.println("""
+                          ____\s
+                        /     |\s
+                        |     O\s
+                        |    /|\\
+                        |     / \s
+                        |
+                        |
+                        /\\""");
                 break;
             case 6:
-                System.out.println("  ____ \n" +
-                                    "/     | \n" +
-                                    "|     O \n" +
-                                    "|    /|\\\n" +
-                                    "|     /\\\n" +
-                                    "|\n" +
-                                    "|\n" +
-                                    "/\\");
+                System.out.println("""
+                          ____\s
+                        /     |\s
+                        |     O\s
+                        |    /|\\
+                        |     /\\
+                        |
+                        |
+                        /\\""");
                 break;
         }
     }
