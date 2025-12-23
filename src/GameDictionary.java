@@ -21,6 +21,9 @@ public class GameDictionary {
 
     public static String getRandomWord() {
         List<String> wordList = createDictionary();
+        if(wordList.isEmpty()) {
+            throw new IllegalStateException("Словарь пуст");
+        }
         int randomWordIndex = (int)(Math.random() * wordsList.size()) + 1;
         return  wordList.get(randomWordIndex);
     }

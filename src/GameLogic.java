@@ -10,7 +10,7 @@ public class GameLogic {
     private HashSet<Character> enteredChars = new HashSet<>();
 
     public GameLogic() {
-        this.randomWord = GameDictionary.getRandomWord().toCharArray();
+        this.randomWord = GameDictionary.getRandomWord().toLowerCase().toCharArray();
         this.maskWord = new char[randomWord.length];
         this.mistakesCounter = 0;
         Arrays.fill(maskWord, GameSettings.MASK_CHAR);
